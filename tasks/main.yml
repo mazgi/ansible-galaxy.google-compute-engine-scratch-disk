@@ -1,8 +1,8 @@
 ---
-  - name: Get information the partition
-    parted:
-      device: "/dev/{{ scratch_disk_device_name }}"
-    register: device_information
+- name: Get information the partition
+  parted:
+    device: "/dev/{{ scratch_disk_device_name }}"
+  register: device_information
 
 - name: Set up partitions
   when: device_information.partitions | length == 0
