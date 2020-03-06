@@ -1,0 +1,9 @@
+---
+scratch_disk_device_name: nvme0n1
+scratch_disk_sub_volume:
+  - name: "home-{{ ansible_user }}-creations"
+    mount_point: "/home/{{ ansible_user }}/Creations"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  - name: var-lib-docker
+    mount_point: /var/lib/docker
