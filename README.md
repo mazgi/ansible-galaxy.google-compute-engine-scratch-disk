@@ -1,0 +1,1 @@
+# ansible-galaxy.google-compute-engine-scratch-disk
