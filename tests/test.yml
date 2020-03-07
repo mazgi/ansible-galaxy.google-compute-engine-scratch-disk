@@ -1,6 +1,9 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: all
   roles:
-    - role: ../..
+    - role: tear-setup
+      become: true
+    - role: /target-role # mounted by docker-compose
+      become: true
+    - role: tear-teardown
       become: true

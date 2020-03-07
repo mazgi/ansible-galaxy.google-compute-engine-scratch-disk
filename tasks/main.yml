@@ -1,11 +1,22 @@
 ---
+- name: Get GCE instance id
+  uri:
+    url: http://169.254.169.254/computeMetadata/v1/instance/id
+    headers:
+      Metadata-Flavor: Google
+  ignore_errors: true
+  register: instance_id
+
 - name: Get information the partition
   parted:
     device: "/dev/{{ scratch_disk_device_name }}"
+  ignore_errors: true
   register: device_information
 
 - name: Set up partitions
-  when: device_information.partitions | length == 0
+  when:
+    - instance_id.status == 200 # is GCE instance
+    - device_information.partitions | length == 0 # has blank NVMe SSD
   block:
     - name: Create a new primary partition
       parted:

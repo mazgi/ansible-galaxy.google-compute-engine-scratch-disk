@@ -1,0 +1,6 @@
+[submodule "tests/Dockerfile.d/provisioning"]
+	path = tests/Dockerfile.d/provisioning
+	url = git@github.com:mazgi/dockerfile.provisioning.git
+[submodule "tests/tasks"]
+	path = tests/tasks
+	url = git@github.com:mazgi/cargo-make.tasks.git
