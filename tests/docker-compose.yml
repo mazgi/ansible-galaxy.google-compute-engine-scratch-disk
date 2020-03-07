@@ -45,6 +45,7 @@ services:
           ansible --inventory $$INSTANCE_NAT_IP_ADDR, --user $$USER_GITHUB_ACCOUNT_NAME --module-name ping $$INSTANCE_NAT_IP_ADDR && break
           sleep 15
         done
+        ansible-playbook --inventory $$INSTANCE_NAT_IP_ADDR, --user $$USER_GITHUB_ACCOUNT_NAME test.yml
         gcloud compute instances delete $${INSTANCE_NAME} --zone=us-central1-a --delete-disks=all --quiet
 
 volumes:
